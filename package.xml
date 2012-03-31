@@ -33,18 +33,20 @@ Furthermore its now possible to split the parser from the handler object, so you
   <active>no</active>
  </developer>
  <date>2012-04-01</date>
- <time>02:21:39</time>
+ <time>02:34:14</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
  </version>
  <stability>
-  <release>stable</release>
-  <api>stable</api>
+  <release>beta</release>
+  <api>beta</api>
  </stability>
  <license>BSD License</license>
  <notes>
-Remove package.php from release
+Drop PHP4
+Introduce exceptions
+Drop PEAR dependency
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
@@ -75,7 +77,7 @@ Remove package.php from release
    <file baseinstalldir="XML" md5sum="21dc5257d037acc919a99f6b861a80bf" name="tests/test3.xml" role="test" />
    <file baseinstalldir="/" md5sum="da81c40f6a76681111a7b907d252d393" name="XML/Parser2.php" role="php" />
    <file baseinstalldir="/" md5sum="fef6d163edd6146b0f14b6778be874c3" name="XML/Parser2/Simple.php" role="php" />
-   <file baseinstalldir="/" md5sum="5db66a37e964d5fd3e4978aa85ab14a8" name="README" role="data" />
+   <file baseinstalldir="/" md5sum="e6fe5f3fda41394287d10c36699ce943" name="README" role="data" />
    <file baseinstalldir="/" md5sum="81da5e9f5d5042b764cfe4d677b717e6" name="run-tests.log" role="data" />
   </dir>
  </contents>
@@ -101,13 +103,15 @@ Remove package.php from release
     <api>0.1.0</api>
    </version>
    <stability>
-    <release>stable</release>
-    <api>stable</api>
+    <release>beta</release>
+    <api>beta</api>
    </stability>
    <date>2012-04-01</date>
    <license>BSD License</license>
    <notes>
-Remove package.php from release
+Drop PHP4
+Introduce exceptions
+Drop PEAR dependency
    </notes>
   </release>
  </changelog>
