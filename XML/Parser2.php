@@ -478,17 +478,13 @@ class XML_Parser2
 
             while ($data = fread($this->fp, 4096)) {
                 if (!$this->_parseString($data, feof($this->fp))) {
-                    $error = throw new XML_Parser2_Exception();
-                    $this->free();
-                    return $error;
+                    throw new XML_Parser2_Exception();
                 }
             }
         } else {
             // otherwise, $this->fp must be a string
             if (!$this->_parseString($this->fp, true)) {
-                $error = throw new XML_Parser2_Exception();
-                $this->free();
-                return $error;
+                throw new XML_Parser2_Exception();
             }
         }
         $this->free();
