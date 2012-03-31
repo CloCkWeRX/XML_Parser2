@@ -530,9 +530,7 @@ class XML_Parser2
         }
 
         if (!$this->_parseString($data, $eof)) {
-            $error = throw new XML_Parser2_Exception();
-            $this->free();
-            return $error;
+            throw new XML_Parser2_Exception();
         }
 
         if ($eof === true) {
