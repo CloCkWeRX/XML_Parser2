@@ -247,15 +247,15 @@ class XML_Parser2
      * If no object will be set, XML_Parser2 assumes that you
      * extend this class and handle the events in $this.
      *
-     * @param object &$obj object to handle the events
+     * @param object $obj object to handle the events
      *
      * @return boolean will always return true
      * @access public
      * @since v1.2.0beta3
      */
-    function setHandlerObj(&$obj)
+    function setHandlerObj($obj)
     {
-        $this->_handlerObj = &$obj;
+        $this->_handlerObj = $obj;
         return true;
     }
 
@@ -272,14 +272,14 @@ class XML_Parser2
         }
 
         if (!is_object($this->_handlerObj)) {
-            $this->_handlerObj = &$this;
+            $this->_handlerObj = $this;
         }
         switch ($this->mode) {
 
         case 'func':
             xml_set_object($this->parser, $this->_handlerObj);
             xml_set_element_handler($this->parser, 
-                array(&$this, 'funcStartHandler'), array(&$this, 'funcEndHandler'));
+                array($this, 'funcStartHandler'), array($this, 'funcEndHandler'));
             break;
 
         case 'event':
@@ -478,7 +478,7 @@ class XML_Parser2
 
             while ($data = fread($this->fp, 4096)) {
                 if (!$this->_parseString($data, feof($this->fp))) {
-                    $error = &throw new XML_Parser2_Exception();
+                    $error = throw new XML_Parser2_Exception();
                     $this->free();
                     return $error;
                 }
@@ -486,7 +486,7 @@ class XML_Parser2
         } else {
             // otherwise, $this->fp must be a string
             if (!$this->_parseString($this->fp, true)) {
-                $error = &throw new XML_Parser2_Exception();
+                $error = throw new XML_Parser2_Exception();
                 $this->free();
                 return $error;
             }
@@ -534,7 +534,7 @@ class XML_Parser2
         }
 
         if (!$this->_parseString($data, $eof)) {
-            $error = &throw new XML_Parser2_Exception();
+            $error = throw new XML_Parser2_Exception();
             $this->free();
             return $error;
         }
@@ -565,23 +565,6 @@ class XML_Parser2
         return null;
     }
 
-    /**
-     * XML_Parser2::raiseError()
-     *
-     * Throws a XML_Parser2_Error
-     *
-     * @param string  $msg   the error message
-     * @param integer $ecode the error message code
-     *
-     * @return XML_Parser2_Error reference to the error object
-     **/
-    function &raiseError($msg = null, $ecode = 0)
-    {
-        $msg = !is_null($msg) ? $msg : $this->parser;
-        $err = &new XML_Parser2_Error($msg, $ecode);
-        return parent::raiseError($err);
-    }
-
     // }}}
     // {{{ funcStartHandler()
 
@@ -599,9 +582,9 @@ class XML_Parser2
         $func = 'xmltag_' . $elem;
         $func = str_replace(array('.', '-', ':'), '_', $func);
         if (method_exists($this->_handlerObj, $func)) {
-            call_user_func(array(&$this->_handlerObj, $func), $xp, $elem, $attribs);
+            call_user_func(array($this->_handlerObj, $func), $xp, $elem, $attribs);
         } elseif (method_exists($this->_handlerObj, 'xmltag')) {
-            call_user_func(array(&$this->_handlerObj, 'xmltag'), 
+            call_user_func(array($this->_handlerObj, 'xmltag'), 
                 $xp, $elem, $attribs);
         }
     }
@@ -622,9 +605,9 @@ class XML_Parser2
         $func = 'xmltag_' . $elem . '_';
         $func = str_replace(array('.', '-', ':'), '_', $func);
         if (method_exists($this->_handlerObj, $func)) {
-            call_user_func(array(&$this->_handlerObj, $func), $xp, $elem);
+            call_user_func(array($this->_handlerObj, $func), $xp, $elem);
         } elseif (method_exists($this->_handlerObj, 'xmltag_')) {
-            call_user_func(array(&$this->_handlerObj, 'xmltag_'), $xp, $elem);
+            call_user_func(array($this->_handlerObj, 'xmltag_'), $xp, $elem);
         }
     }
 
@@ -636,12 +619,12 @@ class XML_Parser2
      *
      * @param mixed $xp       ??
      * @param mixed $elem     ??
-     * @param mixed &$attribs ??
+     * @param mixed $attribs ??
      *
      * @return null
      * @abstract
      */
-    function startHandler($xp, $elem, &$attribs)
+    function startHandler($xp, $elem, $attribs)
     {
         return null;
     }

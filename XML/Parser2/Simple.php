@@ -75,7 +75,7 @@ require_once 'XML/Parser2.php';
  *     }
  * }
  * 
- * $p = &new myParser();
+ * $p = new myParser();
  * 
  * $result = $p->setInputFile('myDoc.xml');
  * $result = $p->parse();
@@ -137,18 +137,18 @@ class XML_Parser2_Simple extends XML_Parser2
     function _initHandlers()
     {
         if (!is_object($this->_handlerObj)) {
-            $this->_handlerObj = &$this;
+            $this->_handlerObj = $this;
         }
 
         if ($this->mode != 'func' && $this->mode != 'event') {
-            return $this->raiseError('Unsupported mode given', 
+            throw new XML_Parser2_Exception('Unsupported mode given', 
                 XML_PARSER2_ERROR_UNSUPPORTED_MODE);
         }
         xml_set_object($this->parser, $this->_handlerObj);
 
-        xml_set_element_handler($this->parser, array(&$this, 'startHandler'), 
-            array(&$this, 'endHandler'));
-        xml_set_character_data_handler($this->parser, array(&$this, 'cdataHandler'));
+        xml_set_element_handler($this->parser, array($this, 'startHandler'), 
+            array($this, 'endHandler'));
+        xml_set_character_data_handler($this->parser, array($this, 'cdataHandler'));
         
         /**
          * set additional handlers for character data, entities, etc.
@@ -187,13 +187,13 @@ class XML_Parser2_Simple extends XML_Parser2
      *
      * @param resource $xp       xml parser resource
      * @param string   $elem     element name
-     * @param array    &$attribs attributes
+     * @param array    $attribs attributes
      *
      * @return mixed
      * @access private
      * @final
      */
-    function startHandler($xp, $elem, &$attribs)
+    function startHandler($xp, $elem, $attribs)
     {
         array_push($this->_elStack, array(
             'name'    => $elem,
@@ -231,7 +231,7 @@ class XML_Parser2_Simple extends XML_Parser2
                 $func = str_replace('.', '_', $func);
             }
             if (method_exists($this->_handlerObj, $func)) {
-                call_user_func(array(&$this->_handlerObj, $func), 
+                call_user_func(array($this->_handlerObj, $func), 
                     $el['name'], $el['attribs'], $data);
             }
             break;
