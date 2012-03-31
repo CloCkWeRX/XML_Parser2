@@ -3,11 +3,11 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * XML_Parser
+ * XML_Parser2
  *
- * XML Parser's Simple parser class 
+ * XML Parsers's Simple parser class 
  *
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * LICENSE:
  *
@@ -39,39 +39,35 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * @category  XML
- * @package   XML_Parser
+ * @package   XML_Parser2
  * @author    Stephan Schmidt <schst@php.net>
  * @copyright 2004-2008 Stephan Schmidt <schst@php.net>
  * @license   http://opensource.org/licenses/bsd-license New BSD License
  * @version   CVS: $Id$
- * @link      http://pear.php.net/package/XML_Parser
+ * @link      http://pear.php.net/package/XML_Parser2
  */
 
 /**
- * built on XML_Parser
+ * built on XML_Parser2
  */
 require_once 'XML/Parser.php';
 
 /**
  * Simple XML parser class.
  *
- * This class is a simplified version of XML_Parser.
+ * This class is a simplified version of XML_Parser2.
  * In most XML applications the real action is executed,
  * when a closing tag is found.
  *
- * XML_Parser_Simple allows you to just implement one callback
+ * XML_Parser2_Simple allows you to just implement one callback
  * for each tag that will receive the tag with its attributes
  * and CData.
  *
  * <code>
  * require_once '../Parser/Simple.php';
  *
- * class myParser extends XML_Parser_Simple
+ * class myParser extends XML_Parser2_Simple
  * {
- *     function myParser()
- *     {
- *        $this->XML_Parser_Simple();
- *      }
  * 
  *    function handleElement($name, $attribs, $data)
  *     {
@@ -86,14 +82,14 @@ require_once 'XML/Parser.php';
  * </code>
  *
  * @category  XML
- * @package   XML_Parser
+ * @package   XML_Parser2
  * @author    Stephan Schmidt <schst@php.net>
  * @copyright 2004-2008 The PHP Group
  * @license   http://opensource.org/licenses/bsd-license New BSD License
  * @version   Release: @package_version@
- * @link      http://pear.php.net/package/XML_Parser
+ * @link      http://pear.php.net/package/XML_Parser2
  */
-class XML_Parser_Simple extends XML_Parser
+class XML_Parser2_Simple extends XML_Parser2
 {
     /**
      * element stack
@@ -133,24 +129,6 @@ class XML_Parser_Simple extends XML_Parser
     );
     
     /**
-     * Creates an XML parser.
-     *
-     * This is needed for PHP4 compatibility, it will
-     * call the constructor, when a new instance is created.
-     *
-     * @param string $srcenc source charset encoding, use NULL (default) to use
-     *                       whatever the document specifies
-     * @param string $mode   how this parser object should work, "event" for
-     *                       handleElement(), "func" to have it call functions
-     *                       named after elements (handleElement_$name())
-     * @param string $tgtenc a valid target encoding
-     */
-    function XML_Parser_Simple($srcenc = null, $mode = 'event', $tgtenc = null)
-    {
-        $this->XML_Parser($srcenc, $mode, $tgtenc);
-    }
-
-    /**
      * inits the handlers
      *
      * @return mixed
@@ -164,7 +142,7 @@ class XML_Parser_Simple extends XML_Parser
 
         if ($this->mode != 'func' && $this->mode != 'event') {
             return $this->raiseError('Unsupported mode given', 
-                XML_PARSER_ERROR_UNSUPPORTED_MODE);
+                XML_PARSER2_ERROR_UNSUPPORTED_MODE);
         }
         xml_set_object($this->parser, $this->_handlerObj);
 
