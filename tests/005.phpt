@@ -1,5 +1,5 @@
 --TEST--
-XML Parser: mixing character encodings
+XML Parser2: mixing character encodings
 --SKIPIF--
 <?php
 if (true) {
@@ -15,7 +15,7 @@ if (!extension_loaded('mbstring')) {
 --FILE--
 <?php
 
-/* Test for: XML/Parser.php
+/* Test for: XML/Parser2.php
  * Parts tested: - mixing character encodings
  *
  * This is what we test:
@@ -27,14 +27,11 @@ if (!extension_loaded('mbstring')) {
  * 6 US-ASCII   -> ISO-8859-1
  */
 
-require_once 'XML/Parser.php';
+require_once 'XML/Parser2.php';
 
-class TestEncodings1 extends XML_Parser {
+class TestEncodings1 extends XML_Parser2 {
     var $output = '';
 
-    function TestEncodings1($to, $mode, $from) {
-        $this->XML_Parser($from, $mode, $to);
-    }
     function startHandler($xp, $elem, $attribs) {
         $this->output .= "<$elem>";
     }

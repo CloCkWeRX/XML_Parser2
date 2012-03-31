@@ -1,5 +1,5 @@
 --TEST--
-XML Parser:  test for Bug #9328 "assigned by reference error in XML_RSS parse"
+XML Parser2:  test for Bug #9328 "assigned by reference error in XML_RSS parse"
 --SKIPIF--
 <?php
 if (version_compare(PHP_VERSION, '5.2.10', 'lt')) {
@@ -33,4 +33,4 @@ $error = $rss->parse();
 echo $error->getMessage() . PHP_EOL;
 ?>
 --EXPECT--
-XML_Parser: Not well-formed (invalid token) at XML input line 1:1
+XML_Parser2: Not well-formed (invalid token) at XML input line 1:1

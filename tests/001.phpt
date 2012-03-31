@@ -1,21 +1,19 @@
 --TEST--
-XML Parser: parse simple string
+XML Parser2: parse simple string
 --SKIPIF--
 <?php if (!extension_loaded("xml")) echo 'skip'; ?>
 --FILE--
 <?php
 //
-// Test for: XML/Parser.php
+// Test for: XML/Parser2.php
 // Parts tested: - parser creation
 //               - some handlers
 //               - parse simple string
 //
-require_once "XML/Parser.php";
+require_once "XML/Parser2.php";
 
-class __TestParser1 extends XML_Parser {
-    function __TestParser1() {
-        $this->XML_Parser();
-    }
+class __TestParser1 extends XML_Parser2 {
+
     function startHandler($xp, $element, $attribs) {
         print "<$element";
         reset($attribs);

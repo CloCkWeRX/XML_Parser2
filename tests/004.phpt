@@ -1,5 +1,5 @@
 --TEST--
-XML Parser: error class (PHP4 behavior)
+XML Parser2: error class (PHP4 behavior)
 --SKIPIF--
 <?php
 if (version_compare(PHP_VERSION, '5.0.0', 'ge')) {
@@ -11,9 +11,9 @@ if (!extension_loaded('xml')) {
 ?>
 --FILE--
 <?php
-require_once 'XML/Parser.php';
-print 'New XML_Parser:  ';
-var_dump(strtolower(get_class($p = new XML_Parser())));
+require_once 'XML/Parser2.php';
+print 'New XML_Parser2:  ';
+var_dump(strtolower(get_class($p = new XML_Parser2())));
 $e = $p->parseString("<?xml version='1.0' ?>\n<foo></bar>", true);
 if (PEAR::isError($e)) {
     printf("Error message: %s" . PHP_EOL, $e->getMessage());
@@ -22,5 +22,5 @@ if (PEAR::isError($e)) {
 }
 ?>
 --EXPECT--
-New XML_Parser:  string(10) "xml_parser"
-Error message: XML_Parser: mismatched tag at XML input line 2:7
+New XML_Parser2:  string(10) "xml_parser"
+Error message: XML_Parser2: mismatched tag at XML input line 2:7

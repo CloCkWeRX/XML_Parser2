@@ -1,21 +1,18 @@
 --TEST--
-XML Parser: parse from file resource
+XML Parser2: parse from file resource
 --SKIPIF--
 <?php if (!extension_loaded("xml")) echo 'skip'; ?>
 --FILE--
 <?php // -*- C++ -*-
 //
-// Test for: XML/Parser.php
+// Test for: XML/Parser2.php
 // Parts tested: - parser creation
 //               - some handlers
 //               - parse from file resource
 //
-require_once "XML/Parser.php";
+require_once "XML/Parser2.php";
 
-class __TestParser3 extends XML_Parser {
-    function __TestParser3() {
-        $this->XML_Parser();
-    }
+class __TestParser3 extends XML_Parser2 {
     function startHandler($xp, $element, $attribs) {
         print "<$element";
         reset($attribs);
