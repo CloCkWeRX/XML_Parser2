@@ -1,25 +1,21 @@
 <?PHP
 /**
- * example for XML_Parser_Simple
+ * example for XML_Parser2_Simple
  *
  * $Id$
  *
  * @author      Stephan Schmidt <schst@php-tools.net>
- * @package     XML_Parser
+ * @package     XML_Parser2
  * @subpackage  Examples
  */
 
 /**
  * require the parser
  */
-require_once 'XML/Parser/Simple.php';
+require_once 'XML/Parser2/Simple.php';
 
-class myParser2 extends XML_Parser_Simple
+class myParser2 extends XML_Parser2_Simple
 {
-    function myParser()
-    {
-        $this->XML_Parser_Simple();
-    }
 
    /**
     * handle the category element
@@ -52,7 +48,7 @@ class myParser2 extends XML_Parser_Simple
     }
 }
 
-$p = &new myParser2();
+$p = new myParser2();
 $result = $p->setInputFile('xml_parser_simple2.xml');
 $p->setMode('func');
 $result = $p->parse();

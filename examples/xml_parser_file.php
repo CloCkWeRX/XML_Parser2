@@ -1,24 +1,19 @@
 <?PHP
 /**
- * example for XML_Parser_Simple
+ * example for XML_Parser2_Simple
  *
  * @author      Stephan Schmidt <schst@php-tools.net>
- * @package     XML_Parser
+ * @package     XML_Parser2
  * @subpackage  Examples
  */
 
 /**
  * require the parser
  */
-require_once 'XML/Parser.php';
+require_once 'XML/Parser2.php';
 
-class myParser extends XML_Parser
+class myParser extends XML_Parser2
 {
-
-    function myParser()
-    {
-        parent::XML_Parser();
-    }
 
    /**
     * handle start element
@@ -47,7 +42,7 @@ class myParser extends XML_Parser
     }
 }
 
-$p = &new myParser();
+$p = new myParser();
 
 $result = $p->setInputFile('xml_parser_file.xml');
 $result = $p->parse();

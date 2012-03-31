@@ -3,16 +3,16 @@
  * Example for the func-mode
  *
  * @author      Stephan Schmidt <schst@php-tools.net>
- * @package     XML_Parser
+ * @package     XML_Parser2
  * @subpackage  Examples
  */
 
 /**
  * require the parser
  */
-require_once '../Parser.php';
+require_once 'XML/Parser2.php';
 
-class myParser extends XML_Parser
+class myParser extends XML_Parser2
 {
     function xmltag_foo_bar($xp, $name, $attribs)
     {
@@ -35,14 +35,8 @@ class myParser extends XML_Parser
     }
 }
 
-$p = &new myParser(null, 'func');
+$p = new myParser(null, 'func');
 
 $result = $p->setInputString('<foo><foo-bar/></foo>');
-if (PEAR::isError($result)) {
-    print $result->getMessage() . "\n";
-}
 $result = $p->parse();
-if (PEAR::isError($result)) {
-    print $result->getMessage() . "\n";
-}
 ?>

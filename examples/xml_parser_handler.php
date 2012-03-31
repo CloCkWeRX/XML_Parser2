@@ -1,16 +1,16 @@
 <?PHP
 /**
- * example for XML_Parser_Simple
+ * example for XML_Parser2_Simple
  *
  * @author      Stephan Schmidt <schst@php-tools.net>
- * @package     XML_Parser
+ * @package     XML_Parser2
  * @subpackage  Examples
  */
 
 /**
  * require the parser
  */
-require_once 'XML/Parser.php';
+require_once 'XML/Parser2.php';
 
 class myHandler
 {
@@ -41,8 +41,8 @@ class myHandler
     }
 }
 
-$p = &new XML_Parser();
-$h = &new myHandler();
+$p = new XML_Parser2();
+$h = new myHandler();
 
 $result = $p->setInputFile('xml_parser_file.xml');
 $result = $p->setHandlerObj($h);
