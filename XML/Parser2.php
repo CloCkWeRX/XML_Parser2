@@ -50,11 +50,6 @@
  */
 
 /**
- * uses PEAR's error handling
- */
-require_once 'PEAR.php';
-
-/**
  * resource could not be created
  */
 define('XML_PARSER2_ERROR_NO_RESOURCE', 200);
@@ -113,7 +108,7 @@ define('XML_PARSER2_ERROR_REMOTE', 205);
  *            - a test using all expat handlers
  *            - options (folding, output charset)
  */
-class XML_Parser2 extends PEAR
+class XML_Parser2
 {
     // {{{ properties
 
@@ -207,8 +202,6 @@ class XML_Parser2 extends PEAR
      */
     function __construct($srcenc = null, $mode = 'event', $tgtenc = null)
     {
-        $this->PEAR('XML_Parser_Error');
-
         $this->mode   = $mode;
         $this->srcenc = $srcenc;
         $this->tgtenc = $tgtenc;
@@ -674,41 +667,7 @@ class XML_Parser2 extends PEAR
     // }}}me
 }
 
-/**
- * error class, replaces PEAR_Error
- *
- * An instance of this class will be returned
- * if an error occurs inside XML_Parser2.
- *
- * There are three advantages over using the standard PEAR_Error:
- * - All messages will be prefixed
- * - check for XML_Parser2 error, using is_a( $error, 'XML_Parser2_Error' )
- * - messages can be generated from the xml_parser resource
- *
- * @category  XML
- * @package   XML_Parser2
- * @author    Stig Bakken <ssb@fast.no>
- * @author    Tomas V.V.Cox <cox@idecnet.com>
- * @author    Stephan Schmidt <schst@php.net>
- * @copyright 2002-2008 The PHP Group
- * @license   http://opensource.org/licenses/bsd-license New BSD License
- * @version   Release: @package_version@
- * @link      http://pear.php.net/package/XML_Parser2
- * @see       PEAR_Error
- */
-class XML_Parser2_Error extends PEAR_Error
-{
-    // {{{ properties
-
-    /**
-    * prefix for all messages
-    *
-    * @var      string
-    */
-    var $error_message_prefix = 'XML_Parser2: ';
-
-    // }}}
-    // {{{ constructor()
+class XML_Parser2_Exception extends Exception {
     /**
     * construct a new error instance
     *
@@ -718,14 +677,10 @@ class XML_Parser2_Error extends PEAR_Error
     *
     * @param string|resource $msgorparser message or parser resource
     * @param integer         $code        error code
-    * @param integer         $mode        error handling
-    * @param integer         $level       error level
     *
     * @access   public
-    * @todo PEAR CS - can't meet 85char line limit without arg refactoring
     */
-    function XML_Parser2_Error($msgorparser = 'unknown error', $code = 0, $mode = PEAR_ERROR_RETURN, $level = E_USER_NOTICE)
-    {
+    public function __construct($msgorparser = 'unknown error', $code = 0) {
         if (is_resource($msgorparser)) {
             $code        = xml_get_error_code($msgorparser);
             $msgorparser = sprintf('%s at XML input line %d:%d',
@@ -733,9 +688,7 @@ class XML_Parser2_Error extends PEAR_Error
                 xml_get_current_line_number($msgorparser),
                 xml_get_current_column_number($msgorparser));
         }
-        $this->PEAR_Error($msgorparser, $code, $mode, $level);
+        parent::__construct($msgorparser, $code);
     }
-    // }}}
 }
-class XML_Parser2_Exception extends Exception {}
 ?>
