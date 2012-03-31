@@ -33,7 +33,7 @@ Furthermore its now possible to split the parser from the handler object, so you
   <active>no</active>
  </developer>
  <date>2012-04-01</date>
- <time>01:42:00</time>
+ <time>02:21:39</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
@@ -48,30 +48,35 @@ Remove package.php from release
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
-   <file baseinstalldir="XML" md5sum="88f4675e960d07abb4b53406923fee90" name="examples/xml_parser_file.php" role="doc" />
+   <file baseinstalldir="XML" md5sum="eb8f39de75b6c0e206d341df2714757b" name="examples/xml_parser_file.php" role="doc" />
    <file baseinstalldir="XML" md5sum="48d354dd3d0ab55a4078ae5c3c1340ea" name="examples/xml_parser_file.xml" role="doc" />
-   <file baseinstalldir="XML" md5sum="9d16033d9d2f15df41a8f7208209deb1" name="examples/xml_parser_funcmode.php" role="doc" />
-   <file baseinstalldir="XML" md5sum="a92d873b15d5eb40ddad473b1df57fad" name="examples/xml_parser_handler.php" role="doc" />
-   <file baseinstalldir="XML" md5sum="ba9688ae6d062457d63447c6affe2f41" name="examples/xml_parser_simple1.php" role="doc" />
+   <file baseinstalldir="XML" md5sum="7c3519064679b1045f85d90d870ae66f" name="examples/xml_parser_funcmode.php" role="doc" />
+   <file baseinstalldir="XML" md5sum="e6f22c041b5f2177bd95a49ad3eb357a" name="examples/xml_parser_handler.php" role="doc" />
+   <file baseinstalldir="XML" md5sum="0f1275533a833b0de6361e20b41f0d13" name="examples/xml_parser_simple1.php" role="doc" />
    <file baseinstalldir="XML" md5sum="dbe5f93179371c10d02bbe94903636f6" name="examples/xml_parser_simple1.xml" role="doc" />
-   <file baseinstalldir="XML" md5sum="f9ab9099f1a8f34962d84cbf8d41a377" name="examples/xml_parser_simple2.php" role="doc" />
+   <file baseinstalldir="XML" md5sum="501341d00eec51a47ab65cb56a4e4521" name="examples/xml_parser_simple2.php" role="doc" />
    <file baseinstalldir="XML" md5sum="ad866824329ffbd32743a97b78405b40" name="examples/xml_parser_simple2.xml" role="doc" />
-   <file baseinstalldir="XML" md5sum="f9a6141c81d8042e05f7ac4e8e9aba3f" name="examples/xml_parser_simple_handler.php" role="doc" />
-   <file baseinstalldir="XML" md5sum="f8c9aa0bc36e9bc2ab7ce4d9e192c53b" name="tests/001.phpt" role="test" />
-   <file baseinstalldir="XML" md5sum="b2b54ce9cebb12c2a6db6f4fc228ccda" name="tests/002.phpt" role="test" />
-   <file baseinstalldir="XML" md5sum="0262b7bce90239ae69f6f0e173419485" name="tests/003.phpt" role="test" />
-   <file baseinstalldir="XML" md5sum="034536524d8b092a05b0d6ab75ec229c" name="tests/004.phpt" role="test" />
-   <file baseinstalldir="XML" md5sum="ebe086722bb851fcb5fb2f307cc13c54" name="tests/004b.phpt" role="test" />
-   <file baseinstalldir="XML" md5sum="1ef453ddc2e206b2d36aaa0fb033baae" name="tests/005.phpt" role="test" />
-   <file baseinstalldir="XML" md5sum="8b33aaf8d12e650bdb79b4f7f9afbc86" name="tests/bug-9328.phpt" role="test" />
-   <file baseinstalldir="XML" md5sum="2d80348998a6964e2933de5466bfe3ce" name="tests/bug-9328b.phpt" role="test" />
-   <file baseinstalldir="XML" md5sum="2aa6e822875c20d3b813dd15e438de53" name="tests/bug-9328c.phpt" role="test" />
-   <file baseinstalldir="XML" md5sum="d4400734126a7aa92a0a91812f48bfb7" name="tests/bug-9328d.phpt" role="test" />
+   <file baseinstalldir="XML" md5sum="45399d23f75eff1a008d6d4539d4ef02" name="examples/xml_parser_simple_handler.php" role="doc" />
+   <file baseinstalldir="XML" md5sum="c6420c30d6ebb2b803937b077bec06ed" name="tests/001.phpt" role="test" />
+   <file baseinstalldir="XML" md5sum="c5af1a5d325302b3bdff84cb7257fdd5" name="tests/002.phpt" role="test" />
+   <file baseinstalldir="XML" md5sum="232e06fe83cf42e2a40382ae80235c6a" name="tests/003.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="c8225384bc04d6ffc80a6d82f09e97ab" name="tests/004b.diff" role="test" />
+   <file baseinstalldir="/" md5sum="77eb64e419fd99b977c276e5c39c15c6" name="tests/004b.exp" role="test" />
+   <file baseinstalldir="/" md5sum="fec63dd74b5e17a4010d10a81de277db" name="tests/004b.log" role="test" />
+   <file baseinstalldir="/" md5sum="d7f1a846aec0c9acb4a6c0db1d314774" name="tests/004b.out" role="test" />
+   <file baseinstalldir="/" md5sum="c94829005e1599885b20b8c42822cb0d" name="tests/004b.php" role="test" />
+   <file baseinstalldir="XML" md5sum="7a1926614e3365737774172ab1a905cb" name="tests/004b.phpt" role="test" />
+   <file baseinstalldir="XML" md5sum="e406915f9e84896dfc225a0766821ad3" name="tests/005.phpt" role="test" />
+   <file baseinstalldir="XML" md5sum="23631a74f1296f912061ae645e0398c1" name="tests/bug-9328.phpt" role="test" />
+   <file baseinstalldir="XML" md5sum="acfa2c4ea7ca1d84d6c21f3a800a8c1c" name="tests/bug-9328b.phpt" role="test" />
+   <file baseinstalldir="XML" md5sum="34bec05a49a4e1419df4b02420c56e59" name="tests/bug-9328c.phpt" role="test" />
+   <file baseinstalldir="XML" md5sum="a0302d3c36f94d9bcd58194a9b8e6b3a" name="tests/bug-9328d.phpt" role="test" />
    <file baseinstalldir="XML" md5sum="21dc5257d037acc919a99f6b861a80bf" name="tests/test2.xml" role="test" />
    <file baseinstalldir="XML" md5sum="21dc5257d037acc919a99f6b861a80bf" name="tests/test3.xml" role="test" />
-   <file baseinstalldir="XML" md5sum="3f54c4e326cd73fe85eb3cc0bbac901b" name="XML/Parser.php" role="php" />
-   <file baseinstalldir="XML" md5sum="e972793f4be2ecbe79d672eaacb0036f" name="XML/Parser/Simple.php" role="php" />
+   <file baseinstalldir="/" md5sum="da81c40f6a76681111a7b907d252d393" name="XML/Parser2.php" role="php" />
+   <file baseinstalldir="/" md5sum="fef6d163edd6146b0f14b6778be874c3" name="XML/Parser2/Simple.php" role="php" />
    <file baseinstalldir="/" md5sum="5db66a37e964d5fd3e4978aa85ab14a8" name="README" role="data" />
+   <file baseinstalldir="/" md5sum="81da5e9f5d5042b764cfe4d677b717e6" name="run-tests.log" role="data" />
   </dir>
  </contents>
  <dependencies>
@@ -90,38 +95,6 @@ Remove package.php from release
  </dependencies>
  <phprelease />
  <changelog>
-  <release>
-   <version>
-    <release>1.1.0beta1</release>
-    <api>1.1.0beta1</api>
-   </version>
-   <stability>
-    <release>beta</release>
-    <api>beta</api>
-   </stability>
-   <date>2004-04-16</date>
-   <license uri="http://www.php.net/license">PHP License</license>
-   <notes>
-- Fixed memory leaks parsing many documents or big files (mroch)
-- Fixed setInput() url detection regex (mroch)
-- Added setInputString() method, allowing strings to be passed as input (schst)
-- Error handling rewritten (cox)
-- Increased the overall parsing speed (cox)
-- Added free() method (schst
-- Added reset() method, that is called when parsing a document so it is possible to parse more than one document per instance (schst)
-- Added error codes (schst)
-- revamped documentation (cox, schst)
-- Fixed bug #516 (url fopen and safe mode) (schst)
-- Fixed bug #637 (dependency on PEAR) (schst)
-- improved parse() and parseString() to be able to parse more than one document (schst)
-- added PHP5 constructor (schst)
-- moved xml_parser_create() to _create() for PHP5 compatibility (schst)
-- added dependency on PHP 4.2
-
-Thanks to Marshall Roch for commments and contributions and Tomas V.V. Cox
-for applying a lot of fixes and improvements.
-   </notes>
-  </release>
   <release>
    <version>
     <release>0.1.0</release>
