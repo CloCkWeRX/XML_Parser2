@@ -7,7 +7,7 @@
  *
  * XML Parser package
  *
- * PHP versions 4 and 5
+ * PHP version 5
  *
  * LICENSE:
  *
@@ -236,7 +236,7 @@ class XML_Parser2 extends PEAR
     function setMode($mode)
     {
         if ($mode != 'func' && $mode != 'event') {
-            $this->raiseError('Unsupported mode given', 
+            throw new XML_Parser2_Exception('Unsupported mode given', 
                 XML_PARSER2_ERROR_UNSUPPORTED_MODE);
         }
 
@@ -294,7 +294,7 @@ class XML_Parser2 extends PEAR
             xml_set_element_handler($this->parser, 'startHandler', 'endHandler');
             break;
         default:
-            return $this->raiseError('Unsupported mode given', 
+            throw new XML_Parser2_Exception('Unsupported mode given', 
                 XML_PARSER2_ERROR_UNSUPPORTED_MODE);
             break;
         }
@@ -339,23 +339,20 @@ class XML_Parser2 extends PEAR
                 if (!@xml_parser_set_option($xp, XML_OPTION_TARGET_ENCODING, 
                     $this->tgtenc)
                 ) {
-                    return $this->raiseError('invalid target encoding', 
+                    throw new XML_Parser2_Exception('invalid target encoding', 
                         XML_PARSER2_ERROR_INVALID_ENCODING);
                 }
             }
             $this->parser = $xp;
             $result       = $this->_initHandlers($this->mode);
-            if ($this->isError($result)) {
-                return $result;
-            }
             xml_parser_set_option($xp, XML_OPTION_CASE_FOLDING, $this->folding);
             return true;
         }
         if (!in_array(strtoupper($this->srcenc), $this->_validEncodings)) {
-            return $this->raiseError('invalid source encoding', 
+            throw new XML_Parser2_Exception('invalid source encoding', 
                 XML_PARSER2_ERROR_INVALID_ENCODING);
         }
-        return $this->raiseError('Unable to create XML parser resource.', 
+        throw new XML_Parser2_Exception('Unable to create XML parser resource.', 
             XML_PARSER2_ERROR_NO_RESOURCE);
     }
 
@@ -374,9 +371,6 @@ class XML_Parser2 extends PEAR
     function reset()
     {
         $result = $this->_create();
-        if ($this->isError($result)) {
-            return $result;
-        }
         return true;
     }
 
@@ -411,7 +405,7 @@ class XML_Parser2 extends PEAR
             $this->fp = $fp;
             return $fp;
         }
-        return $this->raiseError('File could not be opened.', 
+        throw new XML_Parser2_Exception('File could not be opened.', 
             XML_PARSER2_ERROR_FILE_NOT_READABLE);
     }
 
@@ -467,7 +461,7 @@ class XML_Parser2 extends PEAR
             return true;
         }
 
-        return $this->raiseError('Illegal input format', 
+        throw new XML_Parser2_Exception('Illegal input format', 
             XML_PARSER2_ERROR_INVALID_INPUT);
     }
 
@@ -486,15 +480,12 @@ class XML_Parser2 extends PEAR
          * reset the parser
          */
         $result = $this->reset();
-        if ($this->isError($result)) {
-            return $result;
-        }
         // if $this->fp was fopened previously
         if (is_resource($this->fp)) {
 
             while ($data = fread($this->fp, 4096)) {
                 if (!$this->_parseString($data, feof($this->fp))) {
-                    $error = &$this->raiseError();
+                    $error = &throw new XML_Parser2_Exception();
                     $this->free();
                     return $error;
                 }
@@ -502,7 +493,7 @@ class XML_Parser2 extends PEAR
         } else {
             // otherwise, $this->fp must be a string
             if (!$this->_parseString($this->fp, true)) {
-                $error = &$this->raiseError();
+                $error = &throw new XML_Parser2_Exception();
                 $this->free();
                 return $error;
             }
@@ -550,7 +541,7 @@ class XML_Parser2 extends PEAR
         }
 
         if (!$this->_parseString($data, $eof)) {
-            $error = &$this->raiseError();
+            $error = &throw new XML_Parser2_Exception();
             $this->free();
             return $error;
         }
@@ -746,4 +737,5 @@ class XML_Parser2_Error extends PEAR_Error
     }
     // }}}
 }
+class XML_Parser2_Exception extends Exception {}
 ?>

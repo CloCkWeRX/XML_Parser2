@@ -50,7 +50,7 @@
 /**
  * built on XML_Parser2
  */
-require_once 'XML/Parser.php';
+require_once 'XML/Parser2.php';
 
 /**
  * Simple XML parser class.
@@ -176,10 +176,7 @@ class XML_Parser2_Simple extends XML_Parser2
         $this->_data    = array();
         $this->_depth   = 0;
         
-        $result = $this->_create();
-        if ($this->isError($result)) {
-            return $result;
-        }
+        $this->_create();
         return true;
     }
 
